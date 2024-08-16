@@ -1,0 +1,53 @@
+1) Go to the folder where we need to clone the git repo e.g. cd /Users/hunny/Desktop/Pavneet
+
+2) git clone <repo url>
+
+e.g. we are using https in this practice
+
+3) Create feature branch to make changes e.g. features/test-prd
+
+Note: feature branch is created to test your own changes
+
+4) Update the terraform file using any editor e.g. Visual studio code
+
+5) Once all the changes are done, push the changes using below commands to git repo in remote url
+
+    a) git diff
+    b) git add .
+    c) git status
+    d) git commit -m "Update the code"
+    e) git status
+    f) git push origin features/test-prd
+
+6) Verify the terraform plan to see the changes are good 
+
+7) If the plan is not good, follow the same process (Step 4 and Step 5)
+
+8) Create the Pull Request from Github
+
+9) Once the changes are merge to main, Pipeline will execute terraform plan and will ask for approver for Terraform Apply
+
+in gitbash/terminal
+- If on a repo/folder here, do cd .. to come out to main
+- git clone "repo-url"
+- Go to repo in gitbash/terminal by doing cd repo name
+- git checkout -b features/vault-prd   (create a branch so that editing can be done in branch) 
+
+Vs studio - terraform code
+- make changes in this feature branch in vs studio> go to terraform tfvars file to change the values in
+abc-cfs-stg, abc-ml-stg, abc-ds-stg from staging to prod for all values including subnet id as per the account.
+- the abc-cfs-stg, abc-ml-stg, abc-ds-stg were copied from staging env to the the new prod feature branch tfvars file.
+- then the changes were made to prod here and saved 
+in gitbash
+- git add .
+- git commit -m "message"
+- git push origin features/vault-prd
+
+github- Create a pull request
+- Go to the repo>pull request tab>to: main from:select your branch>select the brach to features/vault.prd
+- Now add a reviewer from right side of screen
+- create pull request> once the reviewer review it and approve it, it will merge into main
+- Reviewer should look at plan before approving it
+
+Pipeline:
+- The pipeline will show the plan and in the plan if ever ything looks good then the reviewer can approve it.
